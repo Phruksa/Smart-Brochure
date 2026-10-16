@@ -1,0 +1,62 @@
+{
+  "entities": {
+    "SmartBrochure": {
+      "title": "Smart Brochure",
+      "description": "Insurance smart brochure proposal and comparison data",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier of Smart Brochure" },
+        "customerName": { "type": "string", "description": "Name of the customer" },
+        "isMarked": { "type": "boolean", "description": "Whether brochure is pinned/marked" },
+        "selectedPlanIds": { "type": "array", "description": "List of selected plan IDs" },
+        "selectedPlanNames": { "type": "array", "description": "List of selected plan names" },
+        "agentFirstName": { "type": "string", "description": "Agent first name" },
+        "agentLastName": { "type": "string", "description": "Agent last name" },
+        "agentOfficeCode": { "type": "string", "description": "Agent branch code" },
+        "agentPhone": { "type": "string", "description": "Agent phone number" },
+        "userAge": { "type": "number", "description": "Customer age in years" },
+        "payerType": { "type": "string", "description": "Payer organization type: private, government, or general" },
+        "existingCustomerIdCard": { "type": "string", "description": "Customer ID card number" },
+        "notes": { "type": "string", "description": "Notes and remarks on brochure" },
+        "formattedDate": { "type": "string", "description": "Formatted Thai date text" },
+        "createdAt": { "type": "string", "description": "ISO date string" },
+        "updatedAt": { "type": "string", "description": "ISO date string" }
+      },
+      "required": ["id", "selectedPlanIds"]
+    },
+    "Customer": {
+      "title": "Customer Profile",
+      "description": "Existing policyholder profile",
+      "type": "object",
+      "properties": {
+        "idCard": { "type": "string", "description": "13-digit Thai national ID" },
+        "fullName": { "type": "string", "description": "Customer full name" },
+        "birthDate": { "type": "string", "description": "Birth date YYYY-MM-DD" },
+        "age": { "type": "number", "description": "Current age" },
+        "phone": { "type": "string", "description": "Phone number" },
+        "existingPlanId": { "type": "string", "description": "Existing insurance plan ID" },
+        "policyNumber": { "type": "string", "description": "Policy number" },
+        "startDate": { "type": "string", "description": "Policy start date" },
+        "lossClaimRate": { "type": "number", "description": "Claim loss ratio percentage" },
+        "lossClaimStatus": { "type": "string", "description": "Claim status text" },
+        "lineOaRegistered": { "type": "boolean", "description": "Line OA registration status" },
+        "lineOaStatusText": { "type": "string", "description": "Line OA status text" }
+      },
+      "required": ["idCard", "fullName"]
+    }
+  },
+  "firestore": {
+    "/smart_brochures/{brochureId}": {
+      "schema": "SmartBrochure",
+      "description": "Smart Brochure collection storing brochure comparisons"
+    },
+    "/comparisons/{comparisonId}": {
+      "schema": "SmartBrochure",
+      "description": "Comparison history collection"
+    },
+    "/customers/{customerId}": {
+      "schema": "Customer",
+      "description": "Customer profiles collection"
+    }
+  }
+}

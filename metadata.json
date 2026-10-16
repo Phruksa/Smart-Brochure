@@ -1,0 +1,8 @@
+{
+  "name": "Remix ระบบเปรียบเทียบแผนประกันภัย",
+  "description": "ระบบเปรียบเทียบแผนความคุ้มครอง สรุปความแตกต่างแบบตารางสูงสุด 3 แผน พร้อมส่งออกรายงาน PDF",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

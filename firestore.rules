@@ -1,0 +1,14 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /smart_brochures/{brochureId} {
+      allow read, write: if true;
+    }
+    match /comparisons/{comparisonId} {
+      allow read, write: if true;
+    }
+    match /customers/{customerId} {
+      allow read, write: if true;
+    }
+  }
+}
