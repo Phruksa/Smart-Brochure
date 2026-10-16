@@ -221,86 +221,7 @@ export const SmileSaleSearchCard: React.FC<SmileSaleSearchCardProps> = ({
 
           {mode === 'dob' ? (
             <div className="space-y-3.5">
-              {/* ประเภทหน่วยงานผู้ชำระเบี้ย: หน่วยงานเอกชน, ข้าราชการและรัฐวิสาหกิจ, ทั่วไป */}
-              <div>
-                <div className="flex items-center justify-between mb-1.5">
-                  <label className="text-[11px] sm:text-xs font-bold text-slate-700 flex items-center gap-1.5">
-                    <Briefcase className="w-3.5 h-3.5 text-[#0088cc]" />
-                    <span>ประเภทหน่วยงานผู้ชำระเบี้ย</span>
-                  </label>
-                  <span className="text-[10px] text-slate-400">เลือกกลุ่มเพื่อรับสิทธิประโยชน์</span>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 sm:gap-2">
-                  {/* ตัวเลือกที่ 1: หน่วยงานเอกชน */}
-                  <button
-                    type="button"
-                    onClick={() => setPayerType('private')}
-                    className={`py-2 px-2.5 rounded-lg border text-left transition-all cursor-pointer flex items-center sm:flex-col sm:items-start gap-2 sm:gap-0.5 relative ${
-                      payerType === 'private'
-                        ? 'border-[#0088cc] bg-[#f0f8ff] text-[#00509d] ring-1 ring-[#0088cc] shadow-2xs'
-                        : 'border-slate-300 bg-white text-slate-600 hover:border-slate-400 hover:bg-slate-50'
-                    }`}
-                  >
-                    <div className="flex items-center gap-1.5">
-                      <Building2 className={`w-3.5 h-3.5 ${payerType === 'private' ? 'text-[#0088cc]' : 'text-slate-500'}`} />
-                      <span className="text-xs font-bold leading-tight">หน่วยงานเอกชน</span>
-                    </div>
-                    <span className="text-[10px] text-slate-400 sm:mt-0.5 ml-auto sm:ml-0 font-normal">
-                      พนักงานบริษัท / ปกส.
-                    </span>
-                    {payerType === 'private' && (
-                      <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-[#0088cc] hidden sm:block" />
-                    )}
-                  </button>
-
-                  {/* ตัวเลือกที่ 2: ข้าราชการและรัฐวิสาหกิจ */}
-                  <button
-                    type="button"
-                    onClick={() => setPayerType('government')}
-                    className={`py-2 px-2.5 rounded-lg border text-left transition-all cursor-pointer flex items-center sm:flex-col sm:items-start gap-2 sm:gap-0.5 relative ${
-                      payerType === 'government'
-                        ? 'border-[#0088cc] bg-[#f0f8ff] text-[#00509d] ring-1 ring-[#0088cc] shadow-2xs'
-                        : 'border-slate-300 bg-white text-slate-600 hover:border-slate-400 hover:bg-slate-50'
-                    }`}
-                  >
-                    <div className="flex items-center gap-1.5">
-                      <Landmark className={`w-3.5 h-3.5 ${payerType === 'government' ? 'text-[#0088cc]' : 'text-slate-500'}`} />
-                      <span className="text-xs font-bold leading-tight">ข้าราชการและรัฐวิสาหกิจ</span>
-                    </div>
-                    <span className="text-[10px] text-slate-400 sm:mt-0.5 ml-auto sm:ml-0 font-normal">
-                      เสริมสิทธิเบิกตรง
-                    </span>
-                    {payerType === 'government' && (
-                      <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-[#0088cc] hidden sm:block" />
-                    )}
-                  </button>
-
-                  {/* ตัวเลือกที่ 3: ทั่วไป */}
-                  <button
-                    type="button"
-                    onClick={() => setPayerType('general')}
-                    className={`py-2 px-2.5 rounded-lg border text-left transition-all cursor-pointer flex items-center sm:flex-col sm:items-start gap-2 sm:gap-0.5 relative ${
-                      payerType === 'general'
-                        ? 'border-[#0088cc] bg-[#f0f8ff] text-[#00509d] ring-1 ring-[#0088cc] shadow-2xs'
-                        : 'border-slate-300 bg-white text-slate-600 hover:border-slate-400 hover:bg-slate-50'
-                    }`}
-                  >
-                    <div className="flex items-center gap-1.5">
-                      <Users className={`w-3.5 h-3.5 ${payerType === 'general' ? 'text-[#0088cc]' : 'text-slate-500'}`} />
-                      <span className="text-xs font-bold leading-tight">ทั่วไป</span>
-                    </div>
-                    <span className="text-[10px] text-slate-400 sm:mt-0.5 ml-auto sm:ml-0 font-normal">
-                      ประชาชน / อาชีพอิสระ
-                    </span>
-                    {payerType === 'general' && (
-                      <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-[#0088cc] hidden sm:block" />
-                    )}
-                  </button>
-                </div>
-              </div>
-
-              {/* Date of Birth OR Manual Age Input Section */}
+              {/* 1. Date of Birth OR Manual Age Input Section (มาอยู่ด้านบน) */}
               <div className="space-y-1.5">
                 {/* Header with 'ไม่ทราบวันเกิด' toggle */}
                 <div className="flex items-center justify-between">
@@ -502,6 +423,85 @@ export const SmileSaleSearchCard: React.FC<SmileSaleSearchCardProps> = ({
                     </div>
                   </div>
                 )}
+              </div>
+
+              {/* 2. ประเภทหน่วยงานผู้ชำระเบี้ย (ย้ายลงมาต่อ วัน/เดือน/ปีเกิด) */}
+              <div className="pt-0.5">
+                <div className="flex items-center justify-between mb-1.5">
+                  <label className="text-[11px] sm:text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                    <Briefcase className="w-3.5 h-3.5 text-[#0088cc]" />
+                    <span>ประเภทหน่วยงานผู้ชำระเบี้ย</span>
+                  </label>
+                  <span className="text-[10px] text-slate-400">เลือกกลุ่มเพื่อรับสิทธิประโยชน์</span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 sm:gap-2">
+                  {/* ตัวเลือกที่ 1: หน่วยงานเอกชน */}
+                  <button
+                    type="button"
+                    onClick={() => setPayerType('private')}
+                    className={`py-2 px-2.5 rounded-lg border text-left transition-all cursor-pointer flex items-center sm:flex-col sm:items-start gap-2 sm:gap-0.5 relative ${
+                      payerType === 'private'
+                        ? 'border-[#0088cc] bg-[#f0f8ff] text-[#00509d] ring-1 ring-[#0088cc] shadow-2xs'
+                        : 'border-slate-300 bg-white text-slate-600 hover:border-slate-400 hover:bg-slate-50'
+                    }`}
+                  >
+                    <div className="flex items-center gap-1.5">
+                      <Building2 className={`w-3.5 h-3.5 ${payerType === 'private' ? 'text-[#0088cc]' : 'text-slate-500'}`} />
+                      <span className="text-xs font-bold leading-tight">หน่วยงานเอกชน</span>
+                    </div>
+                    <span className="text-[10px] text-slate-400 sm:mt-0.5 ml-auto sm:ml-0 font-normal">
+                      พนักงานบริษัท / ปกส.
+                    </span>
+                    {payerType === 'private' && (
+                      <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-[#0088cc] hidden sm:block" />
+                    )}
+                  </button>
+
+                  {/* ตัวเลือกที่ 2: ข้าราชการและรัฐวิสาหกิจ */}
+                  <button
+                    type="button"
+                    onClick={() => setPayerType('government')}
+                    className={`py-2 px-2.5 rounded-lg border text-left transition-all cursor-pointer flex items-center sm:flex-col sm:items-start gap-2 sm:gap-0.5 relative ${
+                      payerType === 'government'
+                        ? 'border-[#0088cc] bg-[#f0f8ff] text-[#00509d] ring-1 ring-[#0088cc] shadow-2xs'
+                        : 'border-slate-300 bg-white text-slate-600 hover:border-slate-400 hover:bg-slate-50'
+                    }`}
+                  >
+                    <div className="flex items-center gap-1.5">
+                      <Landmark className={`w-3.5 h-3.5 ${payerType === 'government' ? 'text-[#0088cc]' : 'text-slate-500'}`} />
+                      <span className="text-xs font-bold leading-tight">ข้าราชการและรัฐวิสาหกิจ</span>
+                    </div>
+                    <span className="text-[10px] text-slate-400 sm:mt-0.5 ml-auto sm:ml-0 font-normal">
+                      เสริมสิทธิเบิกตรง
+                    </span>
+                    {payerType === 'government' && (
+                      <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-[#0088cc] hidden sm:block" />
+                    )}
+                  </button>
+
+                  {/* ตัวเลือกที่ 3: ทั่วไป */}
+                  <button
+                    type="button"
+                    onClick={() => setPayerType('general')}
+                    className={`py-2 px-2.5 rounded-lg border text-left transition-all cursor-pointer flex items-center sm:flex-col sm:items-start gap-2 sm:gap-0.5 relative ${
+                      payerType === 'general'
+                        ? 'border-[#0088cc] bg-[#f0f8ff] text-[#00509d] ring-1 ring-[#0088cc] shadow-2xs'
+                        : 'border-slate-300 bg-white text-slate-600 hover:border-slate-400 hover:bg-slate-50'
+                    }`}
+                  >
+                    <div className="flex items-center gap-1.5">
+                      <Users className={`w-3.5 h-3.5 ${payerType === 'general' ? 'text-[#0088cc]' : 'text-slate-500'}`} />
+                      <span className="text-xs font-bold leading-tight">ทั่วไป</span>
+                    </div>
+                    <span className="text-[10px] text-slate-400 sm:mt-0.5 ml-auto sm:ml-0 font-normal">
+                      ประชาชน / อาชีพอิสระ
+                    </span>
+                    {payerType === 'general' && (
+                      <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-[#0088cc] hidden sm:block" />
+                    )}
+                  </button>
+                </div>
               </div>
 
               {/* Action Buttons - compact */}
